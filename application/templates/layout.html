@@ -1,0 +1,20 @@
+<html>
+	<head>
+    		<title>{{ title }}</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th><a href="{{ url_for('home') }}">Home</a></th>
+					<th><a href="{{ url_for('home') }}">Previous</a></th>
+					<th><a href="{{ url_for('slideDisplay') }}">Next</a></th>
+				</tr>
+			</thead>
+		</table>
+		<p> {{ title }} </p>
+		{% block body_content %}
+		{% endblock body_content %}
+	</body>
+</html>
+
