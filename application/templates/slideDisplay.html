@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h2 style="text-align:center;"> {{ title }} </h2>
+<br>
+{% for data in slideData %}
+<br>
+{{data.slideRow}}
+{% endfor %}
+{% endblock body_content %}

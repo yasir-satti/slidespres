@@ -1,0 +1,32 @@
+<html>
+	<head>
+    		<title>{{ title }}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+	</head>
+	<img src="{{url_for('static', filename='ANDDigital_logo.jpg')}}" align="left" width="150" height="40"/>
+	<img src="{{url_for('static', filename='anddigital_golden_shoe_logo.jpg')}}" align="right" width="150" height="40"/>
+	<body>
+		<br>
+		<br>
+		<table>
+			<thead>
+				<tr>
+					<th><a href="{{ url_for('home') }}">Home</a></th>
+					<th><a href="{{ url_for('slide1Display') }}">1. Currnt situation</a></th>
+					<th><a href="{{ url_for('slide2Display') }}">2. Critical issues</a></th>
+					<th><a href="{{ url_for('slide3Display') }}">3. Critical issues: Quick wins</a></th>
+				</tr>
+				<tr>
+					<th><a href="{{ url_for('slide4Display') }}">4. Transformation: Revenues</a></th>
+					<th><a href="{{ url_for('slide5Display') }}">5. Transformation: Online platform</a></th>
+					<th><a href="{{ url_for('slide6Display') }}">6. Transformation: Agile delivery</a></th>
+					<th><a href="{{ url_for('slide7Display') }}">7. Transformation: Talent upskilling</a></th>
+					<th><a href="{{ url_for('slide8Display') }}">8. Transformation: Customer engagement</a></th>	
+				</tr>
+			</thead>
+		</table>
+		{% block body_content %}
+		{% endblock body_content %}
+	</body>
+</html>
+
