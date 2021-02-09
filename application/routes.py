@@ -8,114 +8,44 @@ from application import app, db
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', title='Golden Shoe Presentation')
-
-
-"""
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        hash_pw = bcrypt.generate_password_hash(form.password.data)
-        user = Users(
-            first_name=form.first_name.data,
-            last_name=form.last_name.data,
-            email=form.email.data,
-            password=hash_pw
-        )
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('activityadd'))
-    return render_template('register.html', title='Register', form=form)
-    
-
-@app.route('/activityadd', methods=['GET', 'POST'])
-@login_required
-def activityadd():
-    form = AddForm()
-    if form.validate_on_submit():
-        activityData = Activity(
-            activityDesc=form.activityDesc.data
-        )
-        db.session.add(activityData)
-        db.session.commit()
-        act = Activity.query.filter_by(activityDesc=form.activityDesc.data).all()
-        activRef = act[-1].id
-
-        activitiesData = Activities(
-            activity_ref=activRef,
-            user_ref=current_user.id,
-            ObjRating=form.objRating.data,
-            JoyRating=form.joyRating.data
-        )  
-        db.session.add(activitiesData)
-        db.session.commit()        
-        return redirect(url_for('home'))    
-    else:
-        print(form.errors)    
-    return render_template('activityadd.html', title='Add New Activity', form=form)
-"""
-
-@app.route('/slideDisplay', methods=['GET', 'POST'])
-def slideDisplay():
+    return render_template('home.html', title='Golden Shoe Presentation: road to the future')
+  
+@app.route('/slide1', methods=['GET', 'POST'])
+def slide1Display():
     slideData = db.session.query(Slides).filter_by(slideID=1).all()
-    return render_template('slideDisplay.html', title='Slide title', slideData=slideData)
+    return render_template('slideDisplay.html', title='Current issues', slideData=slideData)
 
-"""
-@app.route('/activitymd', methods=['GET', 'POST'])
-@login_required
-def activitymd():
-    form = ModifyForm()
-    data = db.session.query(Activities).first()
-    if form.validate_on_submit():
-        data.activityDesc=form.activityDesc.data
-        data.ObjRating=form.objRating.data
-        data.JoyRating=form.joyRating.data  
-        db.session.commit()        
-        return redirect(url_for('home'))
-    elif request.method == 'GET':
-        user = data.user_id
-        form.activityDesc.data=data.activityDesc
-        form.objRating.data=data.ObjRating
-        form.objRating.data=data.ObjRating
-        form.joyRating.data=data.JoyRating
-        return render_template('activitymd.html', title='Modify Activity - Select user', form=form, user=user, data=data)
-    else:
-        print(form.errors)    
-    return render_template('activitymd.html', title='Modify Activity')
+@app.route('/slide2', methods=['GET', 'POST'])
+def slide2Display():
+    slideData = db.session.query(Slides).filter_by(slideID=2).all()
+    return render_template('slideDisplay.html', title='Critical issues', slideData=slideData)
 
-@app.route('/activitydelete', methods=['GET', 'POST'])
-@login_required
-def activitydelete():
-    form = DeleteForm()
-    if form.validate_on_submit():
-        data = Activities.query.first()
-        db.session.delete(data)
-        db.session.commit()
-        return redirect(url_for('home'))
-    elif request.method == 'GET':
-        data = Activities.query.first()
-        user = data.user_id
-        form.activityDesc.data=data.activityDesc,
-        form.objRating.data=data.ObjRating,
-        form.joyRating.data=data.JoyRating
-        return render_template('activitydelete.html', title='Delete Activity', form=form, user=user, data=data)
-    else:
-        print(form.errors)    
-    return render_template('activitydelete.html', title='Delete Activity', form=form)
+@app.route('/slide3', methods=['GET', 'POST'])
+def slide3Display():
+    slideData = db.session.query(Slides).filter_by(slideID=3).all()
+    return render_template('slideDisplay.html', title='Critical issues: Quick wins', slideData=slideData)
 
-@app.route('/activitydelete/button', methods=["GET", "POST"])
-@login_required
-def activitydeleteButton(): 
-    activity = Activities.query.first()
-    db.session.delete(activity)
-    db.session.commit()
-    return redirect(url_for('home'))
+@app.route('/slide4', methods=['GET', 'POST'])
+def slide4Display():
+    slideData = db.session.query(Slides).filter_by(slideID=4).all()
+    return render_template('slideDisplay.html', title='Transformation: Revenues', slideData=slideData)
 
-@app.route("/logout")
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
-    """
+@app.route('/slide5', methods=['GET', 'POST'])
+def slide5Display():
+    slideData = db.session.query(Slides).filter_by(slideID=5).all()
+    return render_template('slideDisplay.html', title='Transformation: Online platform', slideData=slideData)
+
+@app.route('/slide6', methods=['GET', 'POST'])
+def slide6Display():
+    slideData = db.session.query(Slides).filter_by(slideID=6).all()
+    return render_template('slideDisplay.html', title='Transformation: Agile delivery', slideData=slideData)
+
+@app.route('/slide7', methods=['GET', 'POST'])
+def slide7Display():
+    slideData = db.session.query(Slides).filter_by(slideID=7).all()
+    return render_template('slideDisplay.html', title='Transformation: Talent upskilling', slideData=slideData)
+
+@app.route('/slide8', methods=['GET', 'POST'])
+def slide8Display():
+    slideData = db.session.query(Slides).filter_by(slideID=8).all()
+    return render_template('slideDisplay.html', title='Transformation: Customer engagement', slideData=slideData)

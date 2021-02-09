@@ -2,7 +2,8 @@ from application import db
 from datetime import datetime
 
 class Slides(db.Model):
-    slideID = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    slideID = db.Column(db.Integer)
     slideTitle = db.Column(db.String(50))
     slideRow = db.Column(db.String(300))
     
